@@ -64,18 +64,18 @@ class MLP():
      self.resetBuffers()
 
    def activation(self, x):
-     #return self.sigmoid(x)
-     return self.tanh(x)
+     return self.sigmoid(x)
+     #return self.tanh(x)
      #return self.relu(x)
 
    def d_activation(self, act_x):
-     #return self.d_sigmoid(act_x)
-     return self.d_tanh(act_x)
+     return self.d_sigmoid(act_x)
+     #return self.d_tanh(act_x)
      #return self.d_relu(act_x)
 
    def dd_activation(self, inp):
-     #return self.dd_sigmoid(inp);
-     return self.dd_tanh(inp)
+     return self.dd_sigmoid(inp);
+     #return self.dd_tanh(inp)
      #return self.dd_relu(inp)
 
    def relu(self, x):
@@ -138,7 +138,7 @@ class MLP():
            self.hiddenInput[layer] = self.hiddenNodes[layer - 1].dot(self.hiddenWeights[layer]) + self.hiddenBias[layer]
         self.hiddenNodes[layer] = self.activation(self.hiddenInput[layer])
      #self.outputNodes = self.activation(self.hiddenNodes.dot(self.outputWeights) + self.outputBias)
-     self.outputNodes = self.hiddenNodes[self.nLayers - 1].dot(self.outputWeights) + self.outputBias  ##linear output layer
+     self.outputNodes = self.hiddenNodes[self.nLayers - 1].dot(self.outputWeights)# + self.outputBias  ##linear output layer
      #print self.outputNodes
      return self.outputNodes
    
@@ -176,7 +176,7 @@ class MLP():
 
 
      self.outputWeights += learningRate * self.updateWeightsOut + momentum * prevDeltaWeightsOut
-     self.outputBias += learningRate * self.updateBiasOut + momentum * prevDeltaBiasOut
+     #self.outputBias += learningRate * self.updateBiasOut + momentum * prevDeltaBiasOut
 
      for idx in range(self.nLayers):
          layer = self.nLayers - idx - 1
