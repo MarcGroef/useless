@@ -5,3 +5,9 @@ Numpy
 
 To train run:
 python code/train.py
+
+TODO:
+
+- Make playable asci interface, with possible live-training
+
+- Make robot that learns (The actual useless machine)
