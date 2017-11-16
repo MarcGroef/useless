@@ -5,11 +5,11 @@ from agent import Agent
 
 
 if __name__ == '__main__':
-    game = Game(20)
+    game = Game(5)
     state = game.getState()
     agent = Agent(state)
     avg = 0
-    for epoch in range (100000000):
+    for epoch in range (1000000):
         old_state = np.copy(state)
         action, Q, is_explore = agent.act(state)
         state, reward = game.update(action)
